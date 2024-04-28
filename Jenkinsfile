@@ -13,7 +13,7 @@ pipeline {
 	                 }}
 		stage('Deployment'){
 		   steps {
-		sh 'cp target/pipeline1.war '/home/triveni/Documents/devops/apache-tomcat-9.0.88/webapps'
+		sh 'cp target/pipeline1.war /home/triveni/Documents/devops/apache-tomcat-9.0.88/webapps'
 
 			}}	
 }}
