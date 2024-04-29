@@ -3,7 +3,7 @@ pipeline {
 	agent any
 	
 	parameters {
-		choice(name: 'ENV', choices: ['QA','UAT'], description: 'Pick Environment value')
+		choice(name: 'ENV', choices: ['QA','UAT'], description: 'Pick Env value')
 	}
 	stages {
 	    stage('Checkout') {
@@ -12,18 +12,24 @@ pipeline {
 		      }}
 		stage('Build') {
 	           steps {
-			  sh '/home/triveni/Documents/devops/apache-maven-3.9.6/bin/mvn install'
+			  sh '/home/triveni/Documents/devops/apache-maven-3.9.6/bin/mvn mvninstall'
+
 	                 }}
 		stage('Deployment'){
 		    steps {
 			script {
 			 if ( env.ENV == 'QA' ){
-        	sh 'cp target/pipeline1.war /home/triveni/Documents/devops/apache-tomcat-9.0.88/webapps'
-         echo "deployment has been COMPLETED on QA!"
+        	sh 'cp target/pipeline1.war /home/triveni/Documents/devops/apache-tomcat-9.0.88/webapps '
+
+        	echo "deployment has been done on QA!"
 			 }
 			else ( env.ENV == 'UAT' ){
-    		sh 'cp target/pipeline1.war /home/triveni/Documents/devops/apache-tomcat-9.0.88/webapps'
-         echo "deployment has been done on UAT!"
+    		sh 'cp target/pipeline1.war /home/triveni/Documents/devops/apache-tomcat-9.0.88/webapps '
+
+    		echo "deployment has been done on UAT!"
 			}
-		        }}}	
+			echo "deployment has been done!"
+			fi
+			
+			}}}	
 }}
