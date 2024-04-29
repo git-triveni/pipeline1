@@ -23,14 +23,9 @@ pipeline {
  
         	echo "deployment has been done on QA!"
 			 }
-			elif ( env.ENV == 'UAT' ){
+			else ( env.ENV == 'UAT' ){
     		sh 'cp target/pipeline1.war /home/triveni/Documents/devops/apache-tomcat-9.0.88/webapps'
-
-
-    		echo "deployment has been done on UAT!"
+                echo "deployment has been done on UAT!"
 			}
-			echo "deployment has been done!"
-			fi
-			
-			}}}	
+		        }}}	
 }}
