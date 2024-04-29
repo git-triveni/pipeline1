@@ -29,7 +29,9 @@ pipeline {
     		echo "deployment has been done on UAT!"
 			}
 			echo "deployment has been done!"
-			
-			
-			}}}	
+			}}}
+		stage('slack'){
+			steps{
+				slackSend baseUrl: 'https://hooks.slack.com/services/', channel: 'grras1', color: 'good', message: 'hello slack', teamDomain: 'DEVOPS', tokenCredentialId: 'anything'
+			}}
 }}
