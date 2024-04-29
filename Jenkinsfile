@@ -16,16 +16,14 @@ pipeline {
 	                 }}
 		stage('Deployment'){
 		    steps {
-
 			script {
 			 if ( env.ENV == 'QA' ){
-        	sh 'cp target/pipeline1.war/home/triveni/Documents/devops/apache-tomcat-9.0.88/webapps'
- 
-        	echo "deployment has been done on QA!"
+        	sh 'cp target/pipeline1.war /home/triveni/Documents/devops/apache-tomcat-9.0.88/webapps'
+         echo "deployment has been COMPLETED on QA!"
 			 }
 			else ( env.ENV == 'UAT' ){
     		sh 'cp target/pipeline1.war /home/triveni/Documents/devops/apache-tomcat-9.0.88/webapps'
-                echo "deployment has been done on UAT!"
+         echo "deployment has been done on UAT!"
 			}
 		        }}}	
 }}
